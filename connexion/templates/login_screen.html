@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+    {% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="text-center alert alert-{{ message.tags }}">{{ message|safe }}</div>
+        {% endfor %}
+    {% endif %}
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+                <div class="row d-flex align-items-center justify-content-center h-100">
+                    <div class="col-md-8 col-lg-7 col-xl-6">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"class="img-fluid" alt="Phone image">                        </div>
+                    <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                        <form method="post" action="{% url 'connexion' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button class="btn btn-primary">Connexion</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
