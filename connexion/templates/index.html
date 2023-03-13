@@ -20,7 +20,23 @@
 
       .navbar .nav-link {
         color: #fff !important;
-        
+        margin-left : 1.5em;
+      }
+
+      .marge{
+        margin-left: 10%;
+      }
+
+      .flex-container{
+        display: flex;
+      }
+      .flex-child{
+        flex: 1;
+        box-shadow: rgba(0,0,0,0.15) 1.95px 1.95px 2.6px;
+        font-size: 20px;
+      }
+      .flex-child:first-child{
+        margin-right: 20px;
       }
     </style>
 
@@ -29,25 +45,23 @@
       <div class="container-fluid">
         <!-- Navbar brand -->
         <a class="navbar-brand nav-link" href="https://mdbootstrap.com/docs/standard/">
-          <strong>MDB</strong>
+          <strong>IBAM ALUMNI</strong>
         </a>
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
           aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarExample01">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse marge" id="navbarExample01">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-around">
             <li class="nav-item active" style= "color:black;">
-              <a class="nav-link " aria-current="page" href="#intro">Home</a>
+              <a class="nav-link " aria-current="page" href="{% url 'index' %}">Acceuil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
-                target="_blank">Learn Bootstrap 5</a>
+              <a class="nav-link" href="#!" rel="nofollow">A propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://mdbootstrap.com/docs/standard/" target="_blank">Download MDB UI KIT</a>
+              <a class="nav-link" href="#!">Nous contacter</a>
             </li>
-
           </ul>
         </div>
 
@@ -70,13 +84,12 @@
     <div id="intro" class="bg-image">
       <div class="mask" >
         <div class="container d-flex align-items-center justify-content-start text-center">
-           <div class="text-white mb-3" style="margin-top: 15%">
+           <div class="text-white mb-3" style="margin-top: 20%;">
             <h1 class="mb-4">Bienvenue Alumnis de l'IBAM </h1>
-            <h5 class="mb-4">Best & free guide of responsive web design</h5>
-            <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button"
-              rel="nofollow" target="_blank">Start tutorial</a>
-            <a class="btn btn-outline-light btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank"
-              role="button">Download MDB UI KIT</a>
+            <h5 class="mb-4">Ce site est là pour mettre en relation les anciens et nouveaux étudiants de l'IBAM. </h5>
+            <h5 class="mb-4">Pour en savoir d'avantage ... </h5>
+            <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"rel="nofollow" >A propos</a>
+            <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button">Nous contacter</a>
           </div>
         </div>
       </div>
@@ -85,9 +98,12 @@
   </header>
   <!--Main Navigation-->
 
+  
+
   <!--Main layout-->
-  <main class="mt-5">
+  <main class="mt-5" style="color: #4B4453;">
     <div class="container">
+      <hr class="my-5" />
       <!--Section: Content-->
       <section>
         <div class="row">
@@ -100,11 +116,11 @@
             </div>
           </div>
 
-          <img scr=""/>
-
 
           <div class="col-md-6 gx-5 mb-4">
-            <h4><strong>Facilis consequatur eligendi</strong></h4>
+            <h4 class="container justify-content-center d-flex align-items-center text-center" style="margin-bottom: 10%;">
+              <strong>OBJECTIFS DE LA PLATEFORME</strong>
+            </h4>
             <p class="text-muted">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
               eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
@@ -124,9 +140,9 @@
       <hr class="my-5" />
 
       <!--Section: Content-->
-      <section class="text-center">
-        <h4 class="mb-5"><strong>Facilis consequatur eligendi</strong></h4>
-
+       <section class="text-center">
+        <h4 class="mb-5"><strong>FILIÈRES DE FORMATION</strong></h4>
+{% comment %}
         <div class="row">
           <div class="col-lg-4 col-md-12 mb-4">
             <div class="card">
@@ -137,7 +153,7 @@
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">MIAGE</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk of the
                   card's content.
@@ -156,7 +172,45 @@
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">ADB</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk of the
+                  card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">ABF</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk of the
+                  card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">MID</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk of the
                   card's content.
@@ -175,7 +229,7 @@
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">CCA</h5>
                 <p class="card-text">
                   Some quick example text to build on the card title and make up the bulk of the
                   card's content.
@@ -185,78 +239,77 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> {% endcomment %}
       <!--Section: Content-->
+
+
+      <div class="flex-container">
+        <div class="flex-child">
+          <div class="card " style="width: auto;">
+            <h3 class="" style="text-decoration: underline; margin-top: 20px;"><strong>LICENCES</strong></h3>
+            <div class="card-body justify-content-start text-left">
+              <ul class="" style="list-style:none;">
+                <li class="card-text"><strong>MIAGE</strong> (Méthodes Informatiques Appliquées à la <pre>        Gestion des Entreprises)</pre></li>
+                <li class="card-text"><strong>CCA</strong> (Comptabilité-Contrôle-Audit)</li>
+                <li class="card-text"><strong>ADB</strong> (Assistanat de Direction Bilingue)</li>
+                <li class="card-text"><strong>ABF</strong> (Assurance-Banque-Finance)</li>
+                <li class="card-text"><strong>MID</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-child">
+          <div class="card " style="width: auto;">
+            <h3 class="" style="text-decoration: underline; margin-top: 20px;"><strong>MASTERS</strong></h3>
+            <div class="card-body justify-content-start text-left">
+              <ul class="" style="list-style:none;">
+                <li class="card-text"><strong>MIAGE</strong> (Méthodes Informatiques Appliquées à la <pre>        Gestion des Entreprises)</pre></li>
+                <li class="card-text"><strong>CCA</strong> (Comptabilité-Contrôle-Audit)</li>
+                <li class="card-text"><strong>ADB</strong> (Assistanat de Direction Bilingue)</li>
+                <li class="card-text"><strong>ABF</strong> (Assurance-Banque-Finance)</li>
+                <li class="card-text"><strong>MID</strong></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
 
       <hr class="my-5" />
 
       <!--Section: Content-->
       <section class="mb-5">
-        <h4 class="mb-5 text-center"><strong>Facilis consequatur eligendi</strong></h4>
-
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-6">
-            <form>
-              <!-- 2 column grid layout with text inputs for the first and last names -->
-              <div class="row mb-4">
-                <div class="col">
-                  <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" />
-                    <label class="form-label" for="form3Example1">First name</label>
+        
+              <div class="card mb-3" style="width: 740px; margin-right: 50%;">
+                <div class="row g-0">
+                  <div class="col-md-6">
+                    <img src="{% static "connexion/images/undraw_education_f8ru.svg" %}" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card-body row mb-6">
+                      <h5 class="card-title">ABONNEZ-VOUS À LA NEWLETTERS</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <div class="col">
+                        <div class="form-outline">
+                          <input type="text" id="form3Example1" class="form-control" placeholder="Entrez votre e-mail"/>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form">
+                          <button type="submit" class="btn btn-primary mb-4">
+                            Sign up
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" />
-                    <label class="form-label" for="form3Example2">Last name</label>
-                  </div>
-                </div>
               </div>
 
-              <!-- Email input -->
-              <div class="form-outline mb-4">
-                <input type="email" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3">Email address</label>
-              </div>
-
-              <!-- Password input -->
-              <div class="form-outline mb-4">
-                <input type="password" id="form3Example4" class="form-control" />
-                <label class="form-label" for="form3Example4">Password</label>
-              </div>
-
-              <!-- Checkbox -->
-              <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" checked />
-                <label class="form-check-label" for="form2Example3">
-                  Subscribe to our newsletter
-                </label>
-              </div>
-
-              <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4">
-                Sign up
-              </button>
-
-              <!-- Register buttons -->
-              <div class="text-center">
-                <p>or sign up with:</p>
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                  <i class="fab fa-facebook-f"></i>
-                </button>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                  <i class="fab fa-google"></i>
-                </button>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                  <i class="fab fa-twitter"></i>
-                </button>
-
-                <button type="button" class="btn btn-primary btn-floating mx-1">
-                  <i class="fab fa-github"></i>
-                </button>
-              </div>
+              
             </form>
           </div>
         </div>
@@ -268,37 +321,6 @@
 
   <!--Footer-->
   <footer class="bg-light text-lg-start">
-    <div class="py-4 text-center">
-      <a role="button" class="btn btn-primary btn-lg m-2"
-        href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow" target="_blank">
-        Learn Bootstrap 5
-      </a>
-      <a role="button" class="btn btn-primary btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank">
-        Download MDB UI KIT
-      </a>
-    </div>
-
-    <hr class="m-0" />
-
-    <div class="text-center py-4 align-items-center">
-      <p>Follow MDB on social media</p>
-      <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
-        rel="nofollow" target="_blank">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
-        target="_blank">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
-        target="_blank">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
-        target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
