@@ -1,0 +1,8 @@
+{% autoescape off %}
+
+Bienvenu sur Alumni IBAM APP 
+
+Bonjour {{name}} 
+Veillez confirmer votre inscription en clickant sur le lien suivant
+lien: https//{{domain}} {% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
