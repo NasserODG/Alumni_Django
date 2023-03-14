@@ -8,7 +8,7 @@ from connexion.models import Connexion
 
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')
 
 class connexion(SuccessMessageMixin,CreateView):
     model = Connexion
