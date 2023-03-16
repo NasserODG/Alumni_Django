@@ -6,7 +6,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import User
 
 
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from django.db.models import Q
 from django.core.validators import validate_email
@@ -17,6 +17,9 @@ from django.core.mail import send_mail,EmailMessage
 # Create your views here.
 def home (request):
     return render (request, 'register.html')
+
+
+
 def sign_up(request):
     error =False
     message=""
@@ -36,21 +39,18 @@ def sign_up(request):
         if error==False:
             if password != repassword:
                 error=True
-                message ="les deux mots de passe ne correspond pas "
+                message ="les deux mots de passe ne correspondent pas "
         if error==False:
              etudiant= Etudiant.objects.filter(Q(email=email)|Q(last_name=last_name)).first()
              
              if etudiant:
                 error=True
-                message =f"un utilisateur avec ce first_name {first_name} email {email} existe deja"  
+                message =f"un utilisateur avec ce first_name {first_name} email {email} existe déjà"  
         if error==False:
             if  'agree' not in request.POST :
                 error=True
-                message =" veillez accepter les terme d'utilisation "
-        
-        
-        
-        
+                message =" veillez accepter les termes d'utilisation "
+         
         if error==False:
             etudiant = Etudiant (
             first_name=first_name,
@@ -61,14 +61,12 @@ def sign_up(request):
             )
             etudiant.mot_de_passe=password
             subject ='Bienvenu sur Alumni IBAM'
-            message= "Bienvenu "+ etudiant.first_name +" "+etudiant.last_name+ "\n\n\n nous sommes heureux de vous compter parmis vous \n\n\n By habib pro dev"
+            message= "Bienvenu "+ etudiant.first_name +" "+etudiant.last_name+ "\n\n\n nous sommes heureux de vous compter parmis vous \n\n\n By Alumni IBAM"
             from_email = settings.EMAIL_HOST_USER
             recipient_list = [etudiant.email]
-            send_mail(subject,
-            message,
-            from_email,
-            recipient_list)
+            send_mail(subject,message,from_email, recipient_list)
             etudiant.save()
+            return redirect('/home/doflamingo/Documents/Alumni/connexion/templates/login_screen.html')
             # email de confirmation 
             current_site = get_current_site(request)
             email_subject = "confirmation de votre email sur Alumni IBAM"
@@ -85,6 +83,8 @@ def sign_up(request):
         'message':message
     }
     return render(request, 'register.html',context)
+
+
 def sign_in(request):
     return render(request,'sing_in.html')
 def log_out(request):

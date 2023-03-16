@@ -1,6 +1,6 @@
 from django import forms
 
-from connexion.models import Etudiant, Connexion
+from connexion.models import Connexion
 
 class ConnexionForm(forms.ModelForm):
     class Meta:
