@@ -7,5 +7,5 @@ urlpatterns = [
     path('register',sign_up, name='sign_up'),
     path('connexion',sign_in, name='sign_in'),
     path('deconnexion',log_out, name='log_out'),
-    path('active/<int:uidb64>/<token>' , activate , name='activate'),
+    path('active/(?P<uidb64>[0-9]+)/(?P<token>[^/]+)\\Z' , activate , name='activate'),
 ]
