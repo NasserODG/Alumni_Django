@@ -89,6 +89,8 @@ def sign_in(request):
     return render(request,'sing_in.html')
 def log_out(request):
     return render(request,'log_out.html')
+
+
 def activate (request,uidb64,token):
     
     try:

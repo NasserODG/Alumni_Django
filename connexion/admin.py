@@ -5,7 +5,7 @@ from connexion.models import Connexion, Etudiant
 # Register your models here.
 @admin.register(Etudiant)
 class EtudiantAdmin(admin.ModelAdmin):
-    list_display =('first_name','last_name','email','phone_number','mot_de_passe')
+    list_display =('first_name','last_name','email','phone_number','is_active','mot_de_passe')
     
 
 
