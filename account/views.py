@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate, get_user_model
 from django.utils.encoding import force_bytes, force_text
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string 
-from django.utils.http import urlsafe_base64_encode  
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode  
 from django.core.mail import EmailMessage
 from account.form import SignupForm
 
@@ -17,6 +17,9 @@ from django.contrib.auth.models import User
 
 from django.utils import six
 from django.contrib.auth.tokens import PasswordResetTokenGenerator 
+from django.contrib.auth.tokens import default_token_generator
+
+from account.models import CustomUser
  
  
  
@@ -45,6 +48,13 @@ def signup(request):
             user = form.save(commit=False)  
             user.is_active = False  
             user.save()  
+            
+            # Générer le token et le stocker dans le champ 'token' de l'utilisateur
+            token = default_token_generator.make_token(user)
+            user.token = token
+            user.save()
+            
+            
             #This is  to obtain the current cite domain   
             current_site_info = get_current_site(request)  
             mail_subject = 'The Activation link has been sent to your email address'  
@@ -52,7 +62,7 @@ def signup(request):
                 'user': user,  
                 'domain': current_site_info.domain,  
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),  
-                'token': account_activation_token.make_token(user),  
+                'token': token,  
             })  
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])  
@@ -65,16 +75,17 @@ def signup(request):
 
 def activate(request, uidb64, token):   
     try:  
-        uid = urlsafe_b64decode(uidb64).decode()
-        user = get_object_or_404(User, pk=uid)
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = CustomUser.objects.get(pk=uid)
     except(TypeError, ValueError, OverflowError,User.DoesNotExist):  
         user = None  
-    if user is not None and account_activation_token.check_token(user, token):  
+    if user is not None and default_token_generator.check_token(user, token):  
         user.is_active = True  
-        user.save()  
+        user.save() 
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')  
     else:  
-        return HttpResponse('Activation link is invalid!')  
+        messages.error(request, 'Activation link is invalid or has expired.')
+        return redirect('signup')  
     
     
     
@@ -86,11 +97,11 @@ def login_request(request):
 			password = form.cleaned_data.get('password')
 			user = authenticate(request, username=username, password=password)
 			if user is not None:
-				login(request, user)
 				messages.info(request, f"You are now logged in as {username}.")
-				return redirect("index")
+				return redirect(request, "index")
 			else:
-				messages.error(request,"Invalid username or password.")
+				error_message = messages.error(request,"Invalid username or password.")
+    
 		else:
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()

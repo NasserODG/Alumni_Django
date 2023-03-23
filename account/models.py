@@ -6,8 +6,8 @@ from django.contrib.auth.models import AbstractBaseUser
 class CustomUser(AbstractBaseUser):
     username = models.CharField(max_length=30)
     email = models.EmailField(unique=True, max_length=254)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+    nom = models.CharField(max_length=30)
+    prenom = models.CharField(max_length=30)
     token = models.CharField(max_length=100, null=True, blank=True)
     password = models.CharField(max_length=100)
     is_active = models.BooleanField(default=False)

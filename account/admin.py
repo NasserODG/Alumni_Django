@@ -5,4 +5,4 @@ from account.models import CustomUser
 # Register your models here.
 @admin.register(CustomUser)
 class UserAdmin(admin.ModelAdmin):
-    list_display =('username','first_name','last_name','email','password','is_active', 'token')
+    list_display =('username','nom','prenom','email','is_active', 'token')
