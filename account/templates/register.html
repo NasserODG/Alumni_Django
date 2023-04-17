@@ -1,23 +1,37 @@
 {% extends 'base.html' %}  
   
 {% block content %}  
-<div class = "container">  
-  <h2>Sign up</h2>  
+
+
+<section class="vh-100">
+  <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+          <div class="col-md-8 col-lg-7 col-xl-6">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"class="img-fluid" alt="Phone image">
+          </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+
   <form method="post">  
-    {% csrf_token %}  
+    {% csrf_token %}
+    <div class="mb-3 row"> 
       {% for field in form %}  
-      <p>  
-        {{ field.label_tag }}<br>  
-        {{ field }}  
-        {% comment %} {% if field.help_text %}  
-          <small style="display: none ">{{ field.help_text }}</small>  
-        {% endif %}  {% endcomment %}
-        {% for error in field.errors %}  
-          <p style="color: red">{{ error }}</p>  
-        {% endfor %}   
-      </p>  
-      {% endfor %}  
-    <button type="submit">Sign up</button>  
+        {{ field.label_tag }}
+        {{ field }} 
+      </p> 
+      {% comment %} {% if field.help_text %}  
+        <small style="display: none ">{{ field.help_text }}</small>  
+      {% endif %} {% endcomment %}
+      {% for error in field.errors %}  
+        <p style="color: red">{{ error }}</p>  
+      {% endfor %}   
+    {% endfor %}  
+    <button class="btn btn-primary" style="margin-left: 38%;">S'inscrire</button>  
+
+    <div class="justify-content-around text-center" style="margin-top: 10%;">
+      <p class="mb-0" >Vous avez déjà un compte? 
+        <a href="{% url 'login' %}" class="text-dark-50 fw-bold">Connectez-vous</a>
+      </p>
+  </div>
   </form>  
 </div>  
 {% endblock %}
