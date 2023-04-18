@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+{% for publication in publications %}
+
+<div class="post-body">
+    <p>{{ publication.content }}</p>
+    <div class="post-image">
+        <img src="{% static 'images/news-feed-post/post-1.jpg' %}" alt="image">
+    </div>
+    <ul class="post-meta-wrap d-flex justify-content-between align-items-center">
+        <li class="post-react">
+            <a href="#"><i class="flaticon-like"></i><span>Like</span> <span
+                    class="number">1499
+                </span></a>
+
+            <ul class="react-list">
+                <li>
+                    <a href="#"><img src="{% static 'images/react/react-1.png' %}"
+                            alt="Like"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/react/react-2.png' %}"
+                            alt="Like"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/react/react-3.png' %}"
+                            alt="Like"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/react/react-4.png' %}"
+                            alt="Like"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/react/react-5.png' %}"
+                            alt="Like"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/react/react-6.png' %}"
+                            alt="Like"></a>
+                </li>
+                <li>
+                    <a href="#"><img src="{% static 'images/react/react-7.png' %}"
+                            alt="Like"></a>
+                </li>
+            </ul>
+        </li>
+        <li class="post-comment">
+            <a href="#"><i class="flaticon-comment"></i><span>Comment</span> <span
+                    class="number">599 </span></a>
+        </li>
+        <li class="post-share">
+            <a href="#"><i class="flaticon-share"></i><span>Share</span> <span
+                    class="number">24
+                </span></a>
+        </li>
+    </ul>
+    <div class="post-comment-list">
+
+
+        {% for commentaire in commentaires %}
+        <div class="comment-list">
+            <div class="comment-image">
+                <a href="my-profile.html"><img src="{% static 'images/user/user-33.jpg' %}"
+                        class="rounded-circle" alt="image"></a>
+            </div>
+                <div class="comment-info">
+                    <span class="name">{{ commentaire.auteur.username }}</span>
+                    <span class="small-text">{{ commentaire.date_creation }}</span>
+                    <p>{{ commentaire.contenu }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>Aucun commentaire pour cette publication</p>
+        {% endfor %}
+
+
+    </div>
+    <form class="post-footer" method="post" action="{% url 'add_Comment' publication_id=publication.id %}">
+        {% csrf_token %}
+        <div class="footer-image">
+            <a href="#"><img src="{% static 'images/user/user-1.jpg' %}" class="rounded-circle" alt="image"></a>
+        </div>
+        <div class="form-group">
+            <textarea name="contenu" class="form-control" placeholder="Write a comment..."></textarea>
+            <label><a href="#"><i class="flaticon-photo-camera"></i></a></label>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    
+    {% endfor %}
+</div>
+</div>
+
+
+{% endblock content %}

@@ -14,7 +14,7 @@ from pathlib import Path, os
 from .emailInfo import *
 import django
 from django.utils.encoding import force_str
-django.utils.encoding.force_text=force_str
+django.utils.encoding.force_text = force_str
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,12 +28,12 @@ SECRET_KEY = 'django-insecure--mex$yd%a@t1ivr)#qc90jeyi3jviy+q9a&hv^nzqv8aw0=2ak
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-EMAIL_BACKEND= EMAIL_BACKEND
-EMAIL_USE_TLS= EMAIL_USE_TLS
-EMAIL_HOST=EMAIL_HOST
-EMAIL_HOST_USER=EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD=EMAIL_HOST_PASSWORD
-EMAIL_PORT=EMAIL_PORT
+EMAIL_BACKEND = EMAIL_BACKEND
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_HOST = EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT = EMAIL_PORT
 
 ALLOWED_HOSTS = []
 
@@ -48,8 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'crispy_forms',
     'home',
+    'crispy_forms',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -132,7 +133,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = 'static_root'
+STACTICFILES_DIRS = [
+    BASE_DIR / 'static/'
+]
+
+STATIC_URL = '/static/'
+
+# Add these new lines
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -22,19 +23,19 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 
 
-    <title>Alumni IBAM</title>
+    <title>{% block title %}Alumni{% endblock %}</title>
 
     <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
 </head>
 
 <body>
 
+
     {% block content %}
 
     {% endblock %}
 
-    <!-- Links of JS files -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
@@ -42,5 +43,5 @@
     <script src="{% static 'js/metismenu.min.js' %}"></script>
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/wow.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script> -->
 </body>
